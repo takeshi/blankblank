@@ -1,0 +1,36 @@
+@import 'colors.scss';
+
+.header{
+  background-color: $i900;
+  margin-top:1.5em;
+  margin-left:0.5em;
+  margin-right:0.5em;
+  border-radius: 0.5em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-left:1.4em;
+  opacity: 0.7;
+  
+  &__title{
+    line-height: 2em;
+    color :$i50;
+    margin-top: 0;
+    font-size:20px;
+    margin-bottom: 0;
+  }
+  
+  &__button{
+    a{
+      color :$i50;
+      font-size:20px;
+    }
+    float: right;
+    margin-top:.3em;
+    margin-right:1em;
+    // border-radius: .3em;
+    // border-style: solid;
+    // border-width: thin;
+    // border-color: $i50;
+    padding: .3em .6em .6em .6em;
+  }
+}

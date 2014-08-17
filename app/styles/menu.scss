@@ -1,0 +1,83 @@
+@import 'colors.scss';
+
+.menu{
+  position: fixed;
+  top:0;
+  left:100%;
+  padding-top: 2em;
+  width: 70%;
+  height:100%;
+  z-index: 10;
+  opacity: 0.8;
+
+  background-color: white;
+  left:30% !important;
+  
+  &.ng-enter{
+    animation-duration: .1s;
+    animation-name: anm-menu-open;
+    animation-timing-function:ease-out;
+  }
+
+  &.ng-leave{
+    animation-duration: .1s;
+    animation-name: anm-menu-hide;
+    animation-timing-function:ease-in;
+  }
+  
+  &__list{
+    padding-left: 0;
+    &__item{
+      padding-left: 1em;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      list-style: none;      
+      border: solid thin rgb(238, 238, 238);
+      font-size: 24px;
+      a{
+        color:$i900;      
+      }
+    }
+  }
+
+  &__back{
+    position:fixed;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    z-index:5;
+    background-color: white;
+    &.ng-leave{
+      animation-duration: .5s;
+      animation-name: anm-menu-hide-back;
+      animation-timing-function:ease;
+    }
+    &.ng-enter{
+      animation-duration: .5s;
+      animation-name: anm-menu-open-back;
+      animation-timing-function:ease;
+    }
+    opacity: 0.8;
+  }
+}
+
+@keyframes anm-menu-open-back{
+  0%{opacity: 0;}
+  100%{opacity: 0.8;}   
+}
+
+@keyframes anm-menu-hide-back{
+  0%{opacity: 0.8;}
+  100%{opacity: 0;}   
+}
+
+@keyframes anm-menu-open {
+  0% {left:90%; }
+  100% {left:30%;}
+}
+
+@keyframes anm-menu-hide {
+  0% {left:30%; }
+  100% {left:90%;}
+}
