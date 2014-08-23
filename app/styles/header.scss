@@ -3,9 +3,10 @@
 .header{
   background-color: $i900;
   margin-top:1.5em;
-  margin-left:0.5em;
-  margin-right:0.5em;
-  border-radius: 0.5em;
+  
+  // margin-left:0.5em;
+  // margin-right:0.5em;
+  // border-radius: 0.5em;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
   padding-left:1.4em;
@@ -17,6 +18,9 @@
     margin-top: 0;
     font-size:20px;
     margin-bottom: 0;
+    a{
+      color:white;
+    }
   }
   
   &__button{
@@ -26,7 +30,7 @@
     }
     float: right;
     margin-top:.3em;
-    margin-right:1em;
+    margin-right:0.2em;
     // border-radius: .3em;
     // border-style: solid;
     // border-width: thin;

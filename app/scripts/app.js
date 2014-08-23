@@ -16,11 +16,12 @@ angular
     'ui.router'
   ]).config(function ($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/top');
+  $urlRouterProvider.otherwise('/items');
 
   $stateProvider
     .state('index', {
       url: '',
+      abstract:true,
       templateUrl: 'views/index2.html',
       controller:'MainCtrl'
     })
@@ -29,5 +30,20 @@ angular
       url: '/top',
       templateUrl: 'views/top.html'
     })
+    
+    .state('index.items',{
+      url:'/items',
+      templateUrl:'views/items.html',
+      controller:'ItemsCtrl'
+    })
+
+    .state('index.item',{
+      url:'/items/:itemId',
+      templateUrl:'views/item.html',
+      controller:'ItemCtrl'
+    })
     ;
+
+}).run(function($location){
+  // $location.path('/items');  
 });

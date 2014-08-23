@@ -1,0 +1,55 @@
+<div class="item">
+  <div class="item__header pull-right">
+    <a class="item__answer__button glyphicon glyphicon-plus btn btn-default"></a>
+  </div>
+
+  <h6 class="item__album">{{item.albumArtist}}</h6>
+  <h5 class="item__title">{{item.title}}</h5>
+
+   <div class="item__splites">
+      <div class="item__splites__scroll" bb-y-scroll>
+
+        <div ng-repeat="splite in item.splites"
+          class="item__splite"
+        >
+        <p class="item__splite__label">
+          {{splite.label}}
+        </p>
+        </div>        
+      </div>
+   </div>
+
+   <div class="item__answer">
+      <div class="item__answer__buttons">
+        <a class="item__answer__button glyphicon glyphicon-eye-open btn btn-default"></a>
+    
+        <a class="item__answer__button glyphicon glyphicon-play btn btn-default"></a>
+
+        <a class="item__answer__button glyphicon glyphicon-stop btn btn-default"></a>
+  
+      </div>
+      
+
+      <div class="item__answer__input">
+        <p class="item__label">Answer</p>
+        <textarea  autocomplete="off" placeholder="Write your answer" ng-model="answer" rows="3"></textarea>
+      
+        <p class="item__label">Result</p>
+        <div class="item__answer__text">
+          {{answer}}
+        </div>
+      </div>
+
+   </div>
+
+   <div class="item__control">
+        <a class="item__control__button glyphicon glyphicon-chevron-left btn btn-default
+"></a>
+
+        <a class="item__control__button btn btn-default glyphicon glyphicon-chevron-right "></a>
+
+       <a class="item__control__button-large btn btn-default btn-block glyphicon glyphicon-play"></a>
+
+   </div>
+
+</dov>

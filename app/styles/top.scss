@@ -2,8 +2,8 @@
 
 .top{
   margin-top: 1.5em;
-  margin-right:1.5em;
-  margin-left:1.5em;
+  margin-right:.5em;
+  margin-left:.5em;
   
   &__button{
     padding-top: 1em;
@@ -15,7 +15,11 @@
     color:$i900;
     background-color: white;
     opacity: 0.6;
-
+    
+    &__icon{
+      position: absolute;
+      right: 0.5em;
+    }
   }
 }
 

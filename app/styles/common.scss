@@ -1,0 +1,12 @@
+@import 'colors.scss';
+
+.common{
+  &__button{
+      border-style: none;
+      // border-width:none;
+      // border-color:$i200;
+      background-color: transparent;
+      color:$i800;
+      padding: 0.3em 0.3em 0.3em 0.3em;          
+  }
+}
