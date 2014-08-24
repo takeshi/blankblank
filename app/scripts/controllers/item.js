@@ -10,6 +10,9 @@
 angular.module('yukiApp')
   .controller('ItemCtrl', function ($scope,$stateParams,Music,$state,MusicPlugin,Tokenizer,$timeout,$log) {
 
+$scope.MainView.title = 'Play';
+
+
 var persistentID = $stateParams.persistentID;
 
 $scope.initialized = false;

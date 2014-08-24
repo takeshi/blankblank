@@ -10,6 +10,8 @@
 angular.module('yukiApp')
   .controller('EditCtrl', function ($scope,$stateParams,Music,$state,MusicPlugin,$log,$timeout) {
 
+$scope.MainView.title = 'Edit';
+
 $scope.initialized = false;
 var persistentID = $stateParams.persistentID;
 $scope.started=false;
@@ -51,6 +53,7 @@ function setSplite(index){
 $scope.selectSplite = function(splite,index){
   if($scope.started){
     $scope.setTime(splite.startTime + splite.length);
+    setSplite(index);
   }else{
     // $scope.splite = splite;
     setSplite(index);
@@ -75,6 +78,7 @@ $scope.play = function(){
 
 $scope.clear = function(){
   $scope.item.splites = [];
+  setSplite(-1);
 };
 
 $scope.clearDisabled = function(){
@@ -122,6 +126,10 @@ $scope.nextItem = function(){
   }
   setSplite(index+1);
 
+  // $timeout(function(){
+  //   $('.edit__item__input').focus();
+  // });
+
 }
 
 $scope.backItem = function(){
@@ -134,6 +142,11 @@ $scope.backItem = function(){
     index = $scope.item.splites.length;
   }
   setSplite(index-1);
+
+  // $timeout(function(){
+  //   $('.edit__item__answer').focus();
+  // });
+
 
 }
 

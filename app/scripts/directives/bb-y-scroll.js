@@ -27,16 +27,13 @@ angular.module('yukiApp')
           return width;
         },function(width){
           element.width(width);
-          // if(scope.scrollleft){
-          //   element.parent().scrollLeft(width);
-          // }
         });
 
         scope.$watch(function(){
           var index = scope.scrollleft();
           var children = element.children();
 
-          var width = -50;
+          var width = 0;
           angular.forEach(children,function(child,i){
             if(i >= index){
               return;
@@ -45,7 +42,16 @@ angular.module('yukiApp')
           });
           return Math.max(width,0);
         },function(width){
-          element.parent().scrollLeft(width);
+          var scrollLeft = element.parent().scrollLeft();
+          var diff = scrollLeft - width;
+
+          console.log(diff,scrollLeft,width);
+          var threadhold = -200;
+          if(diff > 0){
+            element.parent().animate({scrollLeft:width});
+          }else if(diff < threadhold){
+            element.parent().animate({scrollLeft:(width + threadhold)});
+          }
         });
 
       }

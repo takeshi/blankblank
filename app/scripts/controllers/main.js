@@ -11,6 +11,8 @@ angular.module('yukiApp')
   .controller('MainCtrl', function ($scope,MusicPlugin,Music,$state,$timeout) {
     var MainView = $scope.MainView = {};
 
+    $scope.MainView.title = 'Blank Blank';
+
     MainView.menus = [
       {
         title:'Select Music',

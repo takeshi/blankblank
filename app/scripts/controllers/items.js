@@ -9,6 +9,9 @@
  */
 angular.module('yukiApp')
   .controller('ItemsCtrl', function ($scope,$state,Music,$timeout) {
+
+    $scope.MainView.title = 'Blank Blank';
+
     $scope.initialized = false;
     $timeout(function(){
       console.log('Musics#selectAll');
