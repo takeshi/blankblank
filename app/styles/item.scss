@@ -43,10 +43,13 @@
     opacity: .7;
     
     &--active{
-      background-color: $i900 !important;
-      border-style: none !important;
+      // border-style: none !important;
+      border-color: $p500 !important;
+      border-width: medium !important;
+
+
       a{
-        color:white !important;            
+        color: $p500  !important;            
       }
     }
         

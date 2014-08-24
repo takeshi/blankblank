@@ -102,6 +102,7 @@
   <a 
     ng-hide="showDelete"
     ng-swipe-left="showDelete=true"
+    ng-swipe-right="showDelete=true"
     class="edit__button glyphicon glyphicon-remove btn btn-block btn-alert"> 
   </a>
   
@@ -109,6 +110,7 @@
   <a 
     ng-show="showDelete"
     ng-click="remove()"
+    ng-swipe-left="showDelete=false"    
     ng-swipe-right="showDelete=false"
     class="edit__button edit__button--delete  btn btn-block btn-alert"
     >
