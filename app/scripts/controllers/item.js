@@ -99,7 +99,11 @@ $scope.toEdit = function(){
   });
 };
 
-$scope.nextItem = function(){
+$scope.nextItem = function(event){
+  if(event&&event.diffTime > 500){
+    return;
+  }
+
   var index = $scope.spliteIndex;
 
   if(typeof index == 'undefined'){
@@ -113,7 +117,11 @@ $scope.nextItem = function(){
 
 };
 
-$scope.backItem = function(){
+$scope.backItem = function(event){
+  if(event&&event.diffTime > 500){
+    return;
+  }
+
   var index = $scope.spliteIndex;
   if(typeof index == 'undefined'){
     index = $scope.item.splites.length;

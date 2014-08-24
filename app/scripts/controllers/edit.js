@@ -114,7 +114,12 @@ $scope.back = function(time){
   MusicPlugin.back(time);
 }
 
-$scope.nextItem = function(){
+$scope.nextItem = function(event){
+
+  if(event&&event.diffTime > 500){
+    return;
+  }
+
   var index = $scope.spliteIndex;
 
   if(typeof index == 'undefined'){
@@ -126,13 +131,13 @@ $scope.nextItem = function(){
   }
   setSplite(index+1);
 
-  // $timeout(function(){
-  //   $('.edit__item__input').focus();
-  // });
-
 }
 
-$scope.backItem = function(){
+$scope.backItem = function(event){
+  if(event&&event.diffTime > 500){
+    return;
+  }
+
   var index = $scope.spliteIndex;
   if(typeof index == 'undefined'){
     index = $scope.item.splites.length;

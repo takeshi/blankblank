@@ -66,7 +66,9 @@
 
 
 
-<div ng-hide="started||splite==null" ng-swipe-left="nextItem()" ng-swipe-right="backItem()">
+<div ng-hide="started||splite==null" 
+  ng-swipe-left="nextItem($event)" 
+  ng-swipe-right="backItem($event)">
   <div class="edit__item">
     <label>Label</label>
     <input 

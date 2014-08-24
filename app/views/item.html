@@ -33,7 +33,7 @@
     
    </div>
 
-   <div  ng-show="splite" class="item__answer" ng-swipe-left="nextItem()" ng-swipe-right="backItem()">
+   <div  ng-show="splite" class="item__answer" ng-swipe-left="nextItem($event)" ng-swipe-right="backItem($event)">
       <div class="item__answer__buttons">
         <a
           ng-hide="showAnswer" 
