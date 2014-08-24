@@ -1,7 +1,7 @@
 @import 'colors.scss';
 
 .items{
-  width:98%;
+  width:90%;
   height:26em;
   margin: 1em;
   overflow-y: scroll;
@@ -18,8 +18,8 @@
     border-color:$i200;
     // background-color: $i200;
     // opacity: 1;
-    width:90%;
-    height: 3em;
+    width:95%;
+    // height: 3em;
     &__album{
       margin : .5em .5em .5em .5em;
     }

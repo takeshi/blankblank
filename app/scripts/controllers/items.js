@@ -8,19 +8,21 @@
  * Controller of the yukiApp
  */
 angular.module('yukiApp')
-  .controller('ItemsCtrl', function ($scope,$state) {
-    $scope.items = [
-    ];
-    for (var i = 0;i<20;i++){
-      $scope.items.push({
-        "albumTitle":"Fragrance",
-        "title":"A Little < Epilogue >" + (i + 1)
-      });
-    }
+  .controller('ItemsCtrl', function ($scope,$state,Music,$timeout) {
+    $scope.initialized = false;
+    $timeout(function(){
+      console.log('Musics#selectAll');
+      Music.selectAll(function(data){
+        console.log('Musics#selectAll',data);
+        $scope.items = data;
+        $scope.initialized = true;
+        $scope.$apply();
+      })
+    },500);
 
     $scope.toItem = function(item){
       $state.go('index.item',{
-        itemId:item.name
+        persistentID:item.persistentID
       });
     };
 

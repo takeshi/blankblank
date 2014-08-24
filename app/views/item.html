@@ -1,55 +1,102 @@
-<div class="item">
+<div class="item" ng-cloak ng-show="initialized">
   <div class="item__header pull-right">
-    <a class="item__answer__button glyphicon glyphicon-plus btn btn-default"></a>
+    <a ng-click="toEdit()" class="item__header__button glyphicon glyphicon-edit btn btn-default"></a>
   </div>
 
-  <h6 class="item__album">{{item.albumArtist}}</h6>
+  <h6 class="item__album">{{item.albumTitle}}</h6>
   <h5 class="item__title">{{item.title}}</h5>
 
    <div class="item__splites">
-      <div class="item__splites__scroll" bb-y-scroll>
+      <div class="item__splites__scroll" bb-y-scroll scrollleft="spliteIndex">
 
-        <div ng-repeat="splite in item.splites"
+        <div ng-repeat="splite in item.splites track by $index"
           class="item__splite"
+          ng-class="{'item__splite--active':($index == spliteIndex)}"
+            >
+        <a 
+          ng-click="selectSplite(splite,$index)"
+          href="javascript:void(0)"
+          class="item__splite__label btn"
         >
-        <p class="item__splite__label">
-          {{splite.label}}
-        </p>
+          {{splite.label||splite.startTime}}
+        </a>
         </div>        
       </div>
    </div>
 
-   <div class="item__answer">
-      <div class="item__answer__buttons">
-        <a class="item__answer__button glyphicon glyphicon-eye-open btn btn-default"></a>
+   <div ng-hide="splite">
+        <a
+          ng-click="toEdit()"
+          class="item__button btn btn-block btn-default">
+          Edit Item
+        </a>
     
-        <a class="item__answer__button glyphicon glyphicon-play btn btn-default"></a>
+   </div>
 
-        <a class="item__answer__button glyphicon glyphicon-stop btn btn-default"></a>
+   <div  ng-show="splite" class="item__answer" ng-swipe-left="nextItem()" ng-swipe-right="backItem()">
+      <div class="item__answer__buttons">
+        <a
+          ng-hide="showAnswer" 
+          ng-click="showAnswer = true"
+          class="item__answer__button glyphicon glyphicon-eye-open btn btn-default"></a>
+    
+        <a 
+          ng-show="showAnswer" 
+          ng-click="showAnswer = false"
+          class="item__answer__button glyphicon glyphicon-eye-close btn btn-default"></a>
+
+        <a 
+          ng-click="playWithTime(splite)"
+        class="item__answer__button glyphicon glyphicon-headphones btn btn-default"
+      
+        ></a>
+
+        <!-- <a class="item__answer__button glyphicon glyphicon-stop btn btn-default"></a> -->
   
       </div>
       
 
       <div class="item__answer__input">
-        <p class="item__label">Answer</p>
-        <textarea  autocomplete="off" placeholder="Write your answer" ng-model="answer" rows="3"></textarea>
+        <p class="item__label">Answer <span ng-show="splite.clear" class="item__label__correct" >Correct!</span></p>
+        <textarea  ng-keydown="keyEvent($event)" autocomplete="off" placeholder="Write your answer" ng-model="splite.input" rows="3"></textarea>
       
-        <p class="item__label">Result</p>
-        <div class="item__answer__text">
-          {{answer}}
-        </div>
-      </div>
+        <div ng-hide="showAnswer">
+          <p class="item__label">Result</p>
+          <div class="item__answer__text">
 
-   </div>
+           <span ng-if="splite.compare == null">
+              -
+            </span>
+
+            <span ng-repeat="c in splite.compare">
+              <label ng-if="c.compare" class="">
+                {{c.a.substring(0,c.length)}}
+              </label>
+              <label ng-if="!c.compare" class="item__answer--error">
+                {{c.b}}
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div ng-show="showAnswer">
+            <p class="item__label">Answer</p>
+            <div class="item__answer__text">
+              {{splite.answer}}
+            </div>
+          </div>
+        </div>
+
+     </div>
 
    <div class="item__control">
-        <a class="item__control__button glyphicon glyphicon-chevron-left btn btn-default
+<!--         <a class="item__control__button glyphicon glyphicon-chevron-left btn btn-default
 "></a>
 
         <a class="item__control__button btn btn-default glyphicon glyphicon-chevron-right "></a>
 
        <a class="item__control__button-large btn btn-default btn-block glyphicon glyphicon-play"></a>
-
+ -->
    </div>
 
 </dov>

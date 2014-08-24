@@ -5,6 +5,7 @@
 @import 'items.scss';
 @import 'item.scss';
 @import 'common.scss';
+@import 'edit.scss';
 
 body {
   // line-height:0;
@@ -31,4 +32,8 @@ body {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+}
+
+[ng-cloak]{
+  display:none;
 }

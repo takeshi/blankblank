@@ -1,4 +1,12 @@
-<div class="items">
+<div class="items" ng-show="initialized">
+
+  <div ng-hide="items">
+    <a 
+      ng-click="selectMusic()"
+      class="common__button btn btn-default btn-block">
+      Select Music
+    </a>
+  </div>
 
   <div ng-repeat="item in items" class="items__item" ng-click="toItem(item)">
     <h6 class="items__item__album">{{item.albumTitle}}</h6>  

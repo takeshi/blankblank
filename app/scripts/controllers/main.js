@@ -8,15 +8,14 @@
  * Controller of the yukiApp
  */
 angular.module('yukiApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope,MusicPlugin,Music,$state) {
     var MainView = $scope.MainView = {};
 
     MainView.menus = [
       {
         title:'Select Music',
         action:function(){
-          console.log('select');
-          $scope.closeMenu();
+          $state.go('index.selectMusic');
         }
       }
     ];
@@ -25,23 +24,14 @@ angular.module('yukiApp')
 
     $scope.openMenu = function(){
       MainView.showMenu = true;
-      // alert('open menu');
-      // Cordova.exec(
-      //   function(ret){
-      //     console.log(ret);
-      //   }, 
-      //   function(error){
-      //     console.log(error);
-      //   }, 
-      //   'MusicPlugin', 
-      //   'openWindow',
-      //   []
-      // );
-
     };
 
     $scope.closeMenu = function(){
       MainView.showMenu = false;
+    };
+
+    $scope.selectMusic = function(){
+      $state.go('index.selectMusic');
     };
 
   });

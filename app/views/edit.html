@@ -1,0 +1,115 @@
+<div class="item" ng-show="initialized">
+  <div class="item__header">
+    <div class="pull-right">
+    <a
+    ng-hide="started||(item.splites.length == 0)" 
+    ng-click="clear()"
+    class="edit__button edit__button--alert btn">
+    Clear 
+  </a>
+
+    <a ng-click="toItem()" class="item__header__button glyphicon glyphicon-headphones btn btn-default"></a>
+  </div>
+
+
+  <h6 class="item__album">- {{item.albumTitle}} -</h6>
+  <h5 class="item__title">{{item.title}} &nbsp;</h5>
+  </div>
+
+ <div class="edit">
+
+  <div ng-hide="started" class="item__head-button">
+    <a 
+      ng-click="play()"
+      class="edit__button glyphicon glyphicon-play btn btn-block btn-default">
+    </a>
+
+  </div>
+  
+
+  <div ng-show="started">
+
+   <a 
+    ng-click="back()"
+    class="edit__button edit__button--small glyphicon glyphicon-backward btn btn-default">
+    </a>
+
+   <a 
+    ng-click="stop()"
+    class="edit__button edit__button--small glyphicon glyphicon-stop btn btn-default">
+    </a>
+
+    <a 
+      ng-click="clip()"
+      class="edit__button glyphicon glyphicon-plus-sign btn btn-block btn-default">
+    </a>
+
+  </div>
+
+ </div>
+
+ <div class="item__splites">
+
+  <div class="item__splites__scroll" bb-y-scroll scrollleft="spliteIndex">
+
+    <div ng-repeat="splite in item.splites track by $index"
+      class="item__splite"
+      ng-class="{'item__splite--active':($index == spliteIndex)}"
+     >
+      <a ng-click="selectSplite(splite,$index)"
+   class="item__splite__label btn" href="javascript:void(0)">
+        {{splite.label||splite.startTime}}
+      </a>
+    </div>        
+  </div>
+</div>
+
+
+
+<div ng-hide="started||splite==null" ng-swipe-left="nextItem()" ng-swipe-right="backItem()">
+  <div class="edit__item">
+    <label>Label</label>
+    <input ng-keydown="keyEvent($event)" ng-model="splite.label" class="edit__item__input" type="text" />
+
+    <div ng-show="">
+      <label>StartTime</label>
+      <input ng-model="splite.startTime"  type="number" min="0" />
+
+      <label>Length</label>
+      <input ng-model="splite.length"  type="number" min="0" />
+    </div>
+
+    <label>Answer</label>
+    <textarea  ng-keydown="keyEvent($event)" ng-model="splite.answer" rows="3"></textarea>
+    <label>Delete</label>
+    <input ng-model="splite.delete"  type="checkbox" />
+
+  </div>
+
+  <a 
+    ng-click="save()"
+    class="edit__button glyphicon glyphicon-save btn btn-block btn-default">
+  </a>
+
+</div>
+
+<div ng-hide="started">
+
+  <a 
+    ng-hide="showDelete"
+    ng-swipe-left="showDelete=true"
+    class="edit__button glyphicon glyphicon-remove btn btn-block btn-alert"> 
+  </a>
+  
+
+  <a 
+    ng-show="showDelete"
+    ng-click="remove()"
+    ng-swipe-right="showDelete=false"
+    class="edit__button edit__button--delete  btn btn-block btn-alert"
+    >
+    Delete
+  </a>
+</div>
+
+</div>

@@ -38,12 +38,45 @@ angular
     })
 
     .state('index.item',{
-      url:'/items/:itemId',
+      url:'/items/:persistentID',
       templateUrl:'views/item.html',
       controller:'ItemCtrl'
     })
+
+    .state('index.edit',{
+      url:'/items/:persistentID/edit',
+      templateUrl:'views/edit.html',
+      controller:'EditCtrl'
+    })
+
+    .state('index.selectMusic',{
+      url:'/selectMusic',
+      controller:'SelectmusicCtrl'
+    })
+
+
     ;
 
 }).run(function($location){
   // $location.path('/items');  
 });
+
+function isMockMode(){
+    return typeof Cordova == 'undefined';
+}
+
+function startAngular(){
+    var domElement = document.getElementById('myApp');
+    // console.log(domElement);
+    angular.bootstrap(domElement, ['yukiApp']);
+}
+
+if(isMockMode()){
+  $(function(){
+    startAngular();
+  });
+}else{
+  document.addEventListener("deviceready", function(){
+    startAngular();
+  }, false);  
+}
