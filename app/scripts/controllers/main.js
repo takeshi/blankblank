@@ -8,7 +8,7 @@
  * Controller of the yukiApp
  */
 angular.module('yukiApp')
-  .controller('MainCtrl', function ($scope,MusicPlugin,Music,$state) {
+  .controller('MainCtrl', function ($scope,MusicPlugin,Music,$state,$timeout) {
     var MainView = $scope.MainView = {};
 
     MainView.menus = [
@@ -34,4 +34,11 @@ angular.module('yukiApp')
       $state.go('index.selectMusic');
     };
 
+    $scope.scrollTop = function(){
+      $timeout(function(){
+        if(document.activeElement.nodeName == 'BODY'){
+          window.scrollTo(0, 1);
+        }
+      });
+    }
   });

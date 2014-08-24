@@ -58,7 +58,9 @@
 
       <div class="item__answer__input">
         <p class="item__label">Answer <span ng-show="splite.clear" class="item__label__correct" >Correct!</span></p>
-        <textarea  ng-keydown="keyEvent($event)" autocomplete="off" placeholder="Write your answer" ng-model="splite.input" rows="3"></textarea>
+        <textarea 
+         ng-blur="scrollTop()"
+         ng-keydown="keyEvent($event)" autocomplete="off" placeholder="Write your answer" ng-model="splite.input" rows="3"></textarea>
       
         <div ng-hide="showAnswer">
           <p class="item__label">Result</p>

@@ -18,7 +18,7 @@ angular.module('yukiApp')
         $state.go('index.items',{},{reflesh:true});
       });
     },function(data){
-      alert('fail');
+      // alert('fail');
       $scope.closeMenu();
       $state.go('index.items',{},{reflesh:true});
     });

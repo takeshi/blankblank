@@ -69,7 +69,9 @@
 <div ng-hide="started||splite==null" ng-swipe-left="nextItem()" ng-swipe-right="backItem()">
   <div class="edit__item">
     <label>Label</label>
-    <input ng-keydown="keyEvent($event)" ng-model="splite.label" class="edit__item__input" type="text" />
+    <input 
+      ng-blur="scrollTop()"
+      ng-keydown="keyEvent($event)" ng-model="splite.label" class="edit__item__input" type="text" />
 
     <div ng-show="">
       <label>StartTime</label>
@@ -80,7 +82,9 @@
     </div>
 
     <label>Answer</label>
-    <textarea  ng-keydown="keyEvent($event)" ng-model="splite.answer" rows="3"></textarea>
+    <textarea  
+      ng-blur="scrollTop()"
+      ng-keydown="keyEvent($event)" ng-model="splite.answer" rows="3"></textarea>
     <label>Delete</label>
     <input ng-model="splite.delete"  type="checkbox" />
 
